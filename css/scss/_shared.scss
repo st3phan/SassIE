@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+    body {
+		background: white;
+    
+		@include respond-to(portrait) {
+			background: red;
+		}
+
+		@include respond-to(landscape) {
+			background: blue;
+		}
+		
+		@include respond-to(tablet) {
+			background: green;
+		}
+		
+		@include respond-to(desktop) {
+			background: yellow;
+		}
+		
+		@include respond-to(wide) {
+			background: black;
+		}
+		
+		@include respond-to(retina) {
+			background: orange;
+		}
+	}

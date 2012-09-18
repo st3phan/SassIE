@@ -1,0 +1,34 @@
+@charset "utf-8";
+body {
+  background: white;
+}
+@media only screen and (min-width: 20em) {
+  body {
+    background: red;
+  }
+}
+@media only screen and (min-width: 30em) {
+  body {
+    background: blue;
+  }
+}
+@media only screen and (min-width: 47.9375em) {
+  body {
+    background: green;
+  }
+}
+@media only screen and (min-width: 62em) {
+  body {
+    background: yellow;
+  }
+}
+@media only screen and (min-width: 86.375em) {
+  body {
+    background: black;
+  }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (min-device-pixel-ratio: 1.5) {
+  body {
+    background: orange;
+  }
+}

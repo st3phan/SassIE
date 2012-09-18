@@ -1,0 +1,7 @@
+@mixin respond-to($media) {
+	@if $media != wide and $media != retina {
+		@content;
+	}
+}
+
+@import "shared";
