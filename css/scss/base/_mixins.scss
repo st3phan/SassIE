@@ -1,0 +1,111 @@
+/*
+    Media queries
+    https://github.com/nex3/sass/issues/408#issuecomment-6086901
+    ========================================================================== */
+
+    $media-queries: true !default;
+    $media-query-free-breakpoint: medium !default;
+    $breakpoints: small 37.5em, medium 48em, large 60em, full 71.25em !default;
+    
+    // Known mobile & tablet resolutions: https://github.com/h5bp/mobile-boilerplate/wiki/Mobile-Matrices
+    // Convert breakpoint keyword to it's related unit
+    @function convert-breakpoint($break) {
+    	@if type-of($break) == string {
+    		@each $breakpoint in $breakpoints {
+    			$key: nth($breakpoint, 1);
+    			$value: nth($breakpoint, 2);
+    
+    			@if unquote($break) == $key {
+    				$break: $value;
+    			}
+    		}
+    	}
+    	@return $break;
+    }
+    
+    @mixin respond-to($min-width, $max-width: false) {
+    	// Convert keywords to units
+    	$min-width: convert-breakpoint($min-width);
+    	$max-width: convert-breakpoint($max-width);
+    	$media-query-free-breakpoint: convert-breakpoint($media-query-free-breakpoint);
+    
+    	@if $media-queries {
+    		@media screen and (min-width: $min-width) {
+    			 @if $max-width {
+    				 @media (max-width: $max-width) {
+    						@content
+    					}
+    			 } @else {
+    				 @content;
+    			 }
+    		 }
+    	}
+    	@else if $min-width <= $media-query-free-breakpoint and (not $max-width or $max-width and $max-width >= $media-query-free-breakpoint) {
+    		@content;
+    	}
+    }
+    
+    @mixin retina() {
+        @media
+        only screen and (-webkit-min-device-pixel-ratio: 2),
+        only screen and (   min--moz-device-pixel-ratio: 2),
+        only screen and (     -o-min-device-pixel-ratio: 2/1),
+        only screen and (        min-device-pixel-ratio: 2),
+        only screen and (                min-resolution: 192dpi),
+        only screen and (                min-resolution: 2dppx) { 
+    		@content;
+        }
+    }
+    
+/* 
+    Clearfix: contain floats
+    For clearing floats like a boss h5bp.com/q
+    ========================================================================== */
+
+    @mixin clear {
+    	&:before,
+    	&:after {
+    		content: ' ';
+    		display: table;
+    	}
+    
+    	&:after {
+    		clear: both;
+    	}
+    }
+    
+/* 
+    Baseline, measured in pixels
+    The value should be the same as the fontsize value for the html element
+    If the html element's fontsize is set to 62.5% (of the browser's default fontsize of 16px),
+    then the variable below would be 10px.
+    ========================================================================== */
+
+    $baseline-px: $fontsize;
+
+	@mixin rem($property, $px-values) {
+		// Convert the baseline into rems
+		$baseline-rem: $baseline-px / 1rem;
+		// Print the first line in pixel values
+		#{$property}: $px-values;
+		
+		// If there is only one (numeric) value, return the property/value line for it.
+		@if type-of($px-values) == "number" {
+			#{$property}: $px-values / $baseline-rem;
+		} @else {
+			// Create an empty list that we can dump values into
+			$rem-values: unquote("");
+	
+			@each $value in $px-values {
+				// If the value is zero, return 0
+				@if $value == 0 {
+					$rem-values: append($rem-values, $value);
+				} @else {
+					$rem-values: append($rem-values, $value / $baseline-rem);
+				}
+			}
+	
+			// Return the property and its list of converted values
+			#{$property}: $rem-values;
+		}
+    }

@@ -1,1 +1,20 @@
-/.sass-cache/
+# Merge
+*.orig
+
+#Sass
+.sass-cache
+
+#Node
+node_modules/
+
+# Coda
+*._*
+
+# OS-related
+thumbs.db
+.DS_Store
+WS_FTP.LOG
+desktop.ini
+
+# Sublime
+*.sublime**

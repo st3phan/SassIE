@@ -1,0 +1,23 @@
+* {
+    @include box-sizing(border-box);
+}
+
+body {
+    background: green;
+    
+    @include respond-to(small) {
+        background: yellow;
+    }
+    
+    @include respond-to(medium) {
+        background: red;
+    }
+    
+    @include respond-to(large) {
+        background: blue;
+    }
+    
+    @include respond-to(full) {
+        background: black;
+    }
+}

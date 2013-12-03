@@ -1,7 +1,6 @@
-@mixin respond-to($media) {
-	@if $media != wide and $media != retina {
-		@content;
-	}
-}
+@charset "utf-8"; //https://github.com/nex3/sass/issues/620
 
-@import "shared";
+$media-queries: false;
+$media-query-free-breakpoint: full;
+
+@import "screen";

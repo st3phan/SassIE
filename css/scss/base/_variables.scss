@@ -1,0 +1,48 @@
+/*  Media queries
+    ========================================================================== */
+    $breakpoints: 					small 37.5em, medium 48em, large 60em, full 71.25em;
+    
+    $gutter: 						10px;
+    $gutter-full:					20px;
+    $gutter-mq:						medium; // Media query breakpoint when gutters are doubled
+    
+    $push:							true;
+    $pull:							true;
+    
+    $max-total-width:				1180px;
+
+/*  Colours
+    ========================================================================== */
+    $black:                         #000;
+    $white:                         #fff;
+
+/*  Type
+    ========================================================================== */
+    $fontsize:						16px;
+    
+    $fontstack-text:		 		"Helvetica Neue", Helvetica, Arial, sans-serif;
+    $fontstack-display:				"Helvetica Neue", Helvetica, Arial, sans-serif;
+    
+    $pentuple-columbian:			80px;
+    $triple-great-primer:			72px;
+    $canon:							48px;
+    $double-great-primer:			36px;
+    $four-line-brevier:				32px;
+    $double-pica:					24px;
+    $double-small-pica:				20px;
+    $great-primer:					18px;
+    $columbian:						16px;
+    $english:						14px;
+    $pica:							12px;
+    $long-primer:					10px;
+    $brevier:						8px;
+    
+    $fontsize-icon:					$columbian;
+    
+/*  Alignment
+    ========================================================================== */
+    $distance:						$fontsize;
+    $distance-s:					$distance * 1.5;
+    $distance-m:					$distance-s * 1.5;
+    $distance-l:					$distance-m * 1.5;
+    $distance-xl:					$distance-l * 1.5;
